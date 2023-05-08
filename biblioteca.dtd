@@ -1,0 +1,20 @@
+<!ELEMENT biblioteca (libros+,revistas+,periodicos+)>
+<!-- -->
+<!ELEMENT libros (libro+)>
+<!-- 
+<!ELEMENT revistas (revista+)>
+<!ELEMENT periodicos (periodico+)>
+<!ELEMENT periodico (nacional | internacional)>
+-->
+<!ELEMENT libro (titulo,capitulo+,indice,sinopsis)>
+    <!ATTLIST libro id ID #REQUIRED>
+    <!ATTLIST libro tipo_clase CDATA #REQUIRED>
+    <!ATTLIST libro paginas CDATA #REQUIRED>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT capitulo (titulo,contenido)>
+    <!ATTLIST capitulo paginas CDATA #REQUIRED>
+<!ELEMENT contenido EMPTY>
+    <!ATTLIST contenido enlace CDATA #REQUIRED>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT indice (#PCDATA)>
+<!ELEMENT sinopsis (#PCDATA)>

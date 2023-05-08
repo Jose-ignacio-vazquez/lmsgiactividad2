@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE biblioteca SYSTEM "biblioteca.dtd" >
+<biblioteca>
+    <libros>
+        <libro id="L1111" tipo_clase="novela" paginas="169">
+            <titulo>
+            </titulo>
+            <capitulo paginas="32">
+                <titulo></titulo>
+                <contenido enlace="http://libro.com/capitulo1"></contenido>
+                </capitulo>
+                <capitulo paginas="43">
+                    <titulo>
+                    </titulo>
+                    <contenido enlace="http://libro.com/capitulo2"></contenido>
+                </capitulo>
+                 <capitulo paginas="26">
+                    <titulo>
+                    </titulo>
+                    <contenido enlace="http://libro.com/capitulo3"></contenido>
+                </capitulo>
+                <capitulo paginas="68">
+                    <titulo>
+                    </titulo>
+                    <contenido enlace="http://libro.com/capitulo4"></contenido>
+                </capitulo>               
+            <indice>
+            </indice>
+            <sinopsis>
+            </sinopsis>
+
+            </libro>
+            <libro id="L1112" tipo_clase="infantil">
+            
+            </libro>
+            <libro id="didactico">
+            
+            </libro>
+        </libros>
+        
+        <!--         REVISTAS           -->
+        <revistas>
+    
+        </revistas>
+
+        <!--        PERIODICOS          -->
+        <periodicos>
+
+        </periodicos>
+
+</biblioteca>
