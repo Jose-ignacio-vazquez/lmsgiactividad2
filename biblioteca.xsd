@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="biblioteca">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="libros" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="libro">
+                                <xs:complexType>
+                                <xs:attribute name="paginas" type="xs:integer" use="required"></xs:attribute>
+                                    <xs:simpleContent>
+                                        <xs:extension base="identificacion">
+                                            <xs:attribute name="id" type="xs:string" use="required"></xs:attribute> 
+                                            <xs:attribute name="tipo_clase" type="xs:string" use="required"></xs:attribute>                                                                       
+                                        </xs:extension> 
+                                                                          
+                                    
+                                    </xs:simpleContent>                                   
+           
+                                </xs:complexType>
+                            </xs:element>
+                            </xs:sequence>
+                          <xs:group ref="libro"></xs:group>  
+                                                 
+                        
+                    </xs:complexType> 
+            
+                </xs:element> 
+            </xs:sequence>
+        </xs:complexType>
+                <xs:element name="revistas" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="revista">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="idrevista">
+                                            <xs:attribute name="id" type="xs:string" use="required"></xs:attribute>
+                                            <xs:attribute name="tipo_revista" type="xs:string" use="required"></xs:attribute>                                            
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="titulo" type="xs:string" maxOccurs="1"></xs:element>
+                            <xs:element name="numero_revista" type="xs:integer"></xs:element>
+                            <xs:group ref="revista">
+                            </xs:group>
+                            <xs:element name="numero_paginas" type="xs:integer">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="contenido_revista"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>        
+                <xs:element name="periodicos" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="idperiodico">
+                                <xs:attribute name="id" type="xs:string" use="required"></xs:attribute>
+                                <xs:attribute name="tipo_periodico" type="xs:string" use="required"></xs:attribute>
+                                
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                    </xs:element>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:group ref="periodico">
+                            </xs:group>
+                            <xs:element name="indice_periodico" type="xs:string">
+                            
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>    
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+    <xs:simpleType name="identificacion">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="^L\d{4}$"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipo_clase">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="novela"></xs:enumeration>
+            <xs:enumeration value="infantil"></xs:enumeration>
+            <xs:enumeration value="didactico"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="idrevista">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="^R\d{4}$"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipo_revista">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="informatica"></xs:enumeration>
+            <xs:enumeration value="corazon"></xs:enumeration>
+            <xs:enumeration value="coches"></xs:enumeration>
+            <xs:enumeration value="investigacion"></xs:enumeration>
+            <xs:enumeration value="otras"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="idperiodico">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="^P\d{4}$"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipo_periodico">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="nacional"></xs:enumeration>
+            <xs:enumeration value="internacional"></xs:enumeration>
+        </xs:restriction>   
+    </xs:simpleType>
+
+
+
+
+    <xs:group name="libro">
+        <xs:sequence>
+            <xs:element name="titulo_libro" type="xs:string" maxOccurs="1"></xs:element>
+            <xs:group ref="capitulo"></xs:group>
+            <xs:group ref="indice"></xs:group>
+            <xs:element name="sinopsis" type="xs:string" maxOccurs="1"></xs:element>
+        </xs:sequence>
+    </xs:group>
+
+    <xs:group name="capitulo">
+        <xs:sequence>
+            <xs:element name="titulo_capitulo" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="paginas" type="xs:integer" use="required"></xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="contenido">
+                <xs:complexType>
+                    <xs:attribute name="enlace" type="xs:string" use="required"></xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            
+        </xs:sequence>
+    </xs:group>
+
+    <xs:group name="indice">
+        <xs:sequence>
+            <xs:element name="lista" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:group>
+
+    <xs:group name="revista">
+        <xs:sequence>
+            
+            <xs:element name="indice_contenido" type="xs:string"></xs:element>
+            
+        </xs:sequence>
+    </xs:group>
+
+    <xs:group name="periodico">
+        <xs:sequence>
+            <xs:element name="secciones">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="articulo" type="xs:string"></xs:element>
+                        <xs:element name="contenido_periodico" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+        </xs:sequence>
+    </xs:group>
+</xs:schema>
